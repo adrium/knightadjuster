@@ -1,0 +1,41 @@
+#!/bin/sh
+
+CONFIG=~/.config/knightadjuster
+
+THRESHOLD_DARK=4800
+
+PLASMA_DARK=BreezeDark
+PLASMA_LIGHT=BreezeClassic
+KONSOLE_DARK=Dark
+KONSOLE_LIGHT=Light
+
+if [ -e "$CONFIG" ]; then . "$CONFIG"; fi
+
+export DISPLAY=:0
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+if [ $(qdbus org.kde.KWin /ColorCorrect org.kde.kwin.ColorCorrect.currentTemperature) -lt $THRESHOLD_DARK ]; then
+	plasmacolors=$PLASMA_DARK
+	konsolecolors=$KONSOLE_DARK
+else
+	plasmacolors=$PLASMA_LIGHT
+	konsolecolors=$KONSOLE_LIGHT
+fi
+
+plasma-apply-colorscheme $plasmacolors
+
+dbuskonsole=$(qdbus | grep konsole)
+
+if [ "x$dbuskonsole" = x ]; then
+	sed -i s/DefaultProfile=.*/DefaultProfile=$konsolecolors.profile/ ~/.config/konsolerc
+else
+	for bus in $dbuskonsole; do
+		for win in $(qdbus $bus | grep /Windows/); do
+			qdbus $bus $win org.kde.konsole.Window.setDefaultProfile $konsolecolors
+			break
+		done
+		for ses in $(qdbus $bus | grep /Sessions/); do
+			qdbus $bus $ses org.kde.konsole.Session.setProfile $konsolecolors
+		done
+	done
+fi
