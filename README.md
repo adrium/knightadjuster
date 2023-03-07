@@ -18,7 +18,7 @@ Lightweight alternative to [Yin-Yang](https://github.com/oskarsh/Yin-Yang).
 
 ## Configuration
 
-Create the config file `~/.config/knightadjuster` to override the following defaults:
+Create the config file `~/.config/knightadjusterrc` to override the following defaults:
 
 	THRESHOLD_DARK=4800
 

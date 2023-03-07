@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CONFIG=~/.config/knightadjuster
+CONFIG=~/.config/knightadjusterrc
 
 THRESHOLD_DARK=4800
 
@@ -9,10 +9,10 @@ PLASMA_LIGHT=BreezeClassic
 KONSOLE_DARK=Dark
 KONSOLE_LIGHT=Light
 
-if [ -e "$CONFIG" ]; then . "$CONFIG"; fi
-
 export DISPLAY=:0
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+if [ -e "$CONFIG" ]; then . "$CONFIG"; fi
 
 if [ $(qdbus org.kde.KWin /ColorCorrect org.kde.kwin.ColorCorrect.currentTemperature) -lt $THRESHOLD_DARK ]; then
 	plasmacolors=$PLASMA_DARK
