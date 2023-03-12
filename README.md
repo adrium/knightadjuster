@@ -5,7 +5,8 @@ depending on the current [Night Color](https://userbase.kde.org/Tips/Enabling_th
 
 <video src="https://user-images.githubusercontent.com/23739584/223212913-21079f00-c3c0-45f4-8e8c-c71346273f95.mp4" width="480" autoplay loop></video>
 
-Supports KDE Plasma, Kate, Konsole, Dolphin, and Plasma addons that follow color themes.
+Supports KDE Plasma, Kate, Konsole, Dolphin, Plasma addons (that follow color schemes),
+and GTK applications (such as GIMP and LibreOffice).
 
 Recommended to use with:
 
@@ -24,5 +25,7 @@ Create the config file `~/.config/knightadjusterrc` to override the following de
 
 	PLASMA_DARK=BreezeDark
 	PLASMA_LIGHT=BreezeClassic
+	ICON_DARK=breeze-dark
+	ICON_LIGHT=breeze
 	KONSOLE_DARK=Dark
 	KONSOLE_LIGHT=Light
