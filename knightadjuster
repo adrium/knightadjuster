@@ -29,6 +29,13 @@ else
 	konsolecolors=$KONSOLE_LIGHT
 fi
 
+plasmacurrent=$(grep ColorScheme= ~/.config/kdeglobals)
+
+if [ "x$plasmacurrent" = "xColorScheme=$plasmacolors" ]; then
+	echo no change $plasmacurrent
+	return
+fi
+
 $BIN_PLASMA $plasmacolors
 $BIN_ICON $iconcolors
 
