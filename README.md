@@ -6,7 +6,7 @@ depending on the current [Night Color](https://userbase.kde.org/Tips/Enabling_th
 <video src="https://user-images.githubusercontent.com/23739584/223212913-21079f00-c3c0-45f4-8e8c-c71346273f95.mp4" width="480" autoplay loop></video>
 
 Supports KDE Plasma, Kate, Konsole, Dolphin, Plasma addons (that follow color schemes),
-and GTK applications (such as GIMP and LibreOffice).
+GTK applications (such as GIMP and LibreOffice), and Google Chrome.
 
 Recommended to use with:
 
@@ -29,3 +29,12 @@ Create the config file `~/.config/knightadjusterrc` to override the following de
 	ICON_LIGHT=breeze
 	KONSOLE_DARK=Dark
 	KONSOLE_LIGHT=Light
+	CHROME_DARK=1
+	CHROME_LIGHT=9
+
+## Google Chrome Caveats
+
+* If Chrome is already running, it needs to be restarted to apply the changes
+  * The user is prompted to confirm not to interfere with ongoing work
+* Dark mode has to be set to a value other than 'Default' before the script works
+  * Enable it here: `chrome://flags/#enable-force-dark`
