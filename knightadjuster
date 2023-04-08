@@ -10,6 +10,8 @@ ICON_DARK=breeze-dark
 ICON_LIGHT=breeze
 KONSOLE_DARK=Dark
 KONSOLE_LIGHT=Light
+CHROME_DARK=1
+CHROME_LIGHT=9
 
 BIN_PLASMA=plasma-apply-colorscheme
 BIN_ICON=$(locate plasma-changeicons)
@@ -23,10 +25,12 @@ if [ $(qdbus org.kde.KWin /ColorCorrect org.kde.kwin.ColorCorrect.currentTempera
 	plasmacolors=$PLASMA_DARK
 	iconcolors=$ICON_DARK
 	konsolecolors=$KONSOLE_DARK
+	chromecolors=$CHROME_DARK
 else
 	plasmacolors=$PLASMA_LIGHT
 	iconcolors=$ICON_LIGHT
 	konsolecolors=$KONSOLE_LIGHT
+	chromecolors=$CHROME_LIGHT
 fi
 
 plasmacurrent=$(grep ColorScheme= ~/.config/kdeglobals)
@@ -53,4 +57,17 @@ else
 			qdbus $bus $ses org.kde.konsole.Session.setProfile $konsolecolors
 		done
 	done
+fi
+
+chromepid=$(pgrep chrome)
+
+if [ "x$chromepid" = x ]; then
+	sed -i s/enable-force-dark@./enable-force-dark@$chromecolors/ ~/.config/google-chrome*/'Local State'
+else
+	if kdialog --yesno 'Restart chrome?'; then
+		pkill -INT -f chrome
+		pidwait chrome
+		sed -i s/enable-force-dark@./enable-force-dark@$chromecolors/ ~/.config/google-chrome*/'Local State'
+		qdbus org.kde.klauncher5 /KLauncher org.kde.KLauncher.kdeinit_exec google-chrome --restore-last-session "" ""
+	fi
 fi
