@@ -25,6 +25,8 @@ Create the config file `~/.config/knightadjusterrc` to override the following de
 
 	PLASMA_DARK=BreezeDark
 	PLASMA_LIGHT=BreezeClassic
+	CURSOR_DARK=Breeze_Snow
+	CURSOR_LIGHT=breeze_cursors
 	ICON_DARK=breeze-dark
 	ICON_LIGHT=breeze
 	KONSOLE_DARK=Dark

@@ -6,6 +6,8 @@ THRESHOLD_DARK=4800
 
 PLASMA_DARK=BreezeDark
 PLASMA_LIGHT=BreezeClassic
+CURSOR_DARK=Breeze_Snow
+CURSOR_LIGHT=breeze_cursors
 ICON_DARK=breeze-dark
 ICON_LIGHT=breeze
 KONSOLE_DARK=Dark
@@ -14,6 +16,7 @@ CHROME_DARK=1
 CHROME_LIGHT=9
 
 BIN_PLASMA=plasma-apply-colorscheme
+BIN_CURSOR=plasma-apply-cursortheme
 BIN_ICON=$(locate plasma-changeicons)
 
 export DISPLAY=:0
@@ -23,11 +26,13 @@ if [ -e "$CONFIG" ]; then . "$CONFIG"; fi
 
 if [ $(qdbus org.kde.KWin /ColorCorrect org.kde.kwin.ColorCorrect.currentTemperature) -lt $THRESHOLD_DARK ]; then
 	plasmacolors=$PLASMA_DARK
+	cursorcolors=$CURSOR_DARK
 	iconcolors=$ICON_DARK
 	konsolecolors=$KONSOLE_DARK
 	chromecolors=$CHROME_DARK
 else
 	plasmacolors=$PLASMA_LIGHT
+	cursorcolors=$CURSOR_LIGHT
 	iconcolors=$ICON_LIGHT
 	konsolecolors=$KONSOLE_LIGHT
 	chromecolors=$CHROME_LIGHT
@@ -41,6 +46,7 @@ if [ "x$plasmacurrent" = "xColorScheme=$plasmacolors" ]; then
 fi
 
 $BIN_PLASMA $plasmacolors
+$BIN_CURSOR $cursorcolors
 $BIN_ICON $iconcolors
 
 dbuskonsole=$(qdbus | grep konsole)
