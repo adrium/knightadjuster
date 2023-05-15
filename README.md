@@ -34,9 +34,10 @@ Create the config file `~/.config/knightadjusterrc` to override the following de
 	CHROME_DARK=1
 	CHROME_LIGHT=9
 
-## Google Chrome Caveats
+## Google Chrome
 
-* If Chrome is already running, it needs to be restarted to apply the changes
-  * The user is prompted to confirm not to interfere with ongoing work
-* Dark mode has to be set to a value other than 'Default' before the script works
+* Support for [light/dark mode preference](https://github.com/KDE/xdg-desktop-portal-kde/blob/master/src/settings.cpp) since [version 114](https://bugs.chromium.org/p/chromium/issues/detail?id=998903).
+* Force dark mode can be set to a value other than 'Default'
   * Enable it here: `chrome://flags/#enable-force-dark`
+  * If Chrome is already running, it needs to be restarted to apply the changes
+  * The user is prompted to confirm not to interfere with ongoing work
