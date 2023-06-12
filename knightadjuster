@@ -17,7 +17,13 @@ CHROME_LIGHT=9
 
 BIN_PLASMA=plasma-apply-colorscheme
 BIN_CURSOR=plasma-apply-cursortheme
-BIN_ICON=$(locate plasma-changeicons)
+
+cat /etc/lsb-release | grep nixos > /dev/null
+if [ $? -eq 0 ]; then
+	BIN_ICON=$(nix --extra-experimental-features nix-command --extra-experimental-features flakes eval -f '<nixpkgs>' --raw 'pkgs.libsForQt5.plasma-workspace')/libexec/plasma-changeicons
+else
+	BIN_ICON=$(locate plasma-changeicons)
+fi
 
 export DISPLAY=:0
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
@@ -42,7 +48,7 @@ plasmacurrent=$(grep ColorScheme= ~/.config/kdeglobals)
 
 if [ "x$plasmacurrent" = "xColorScheme=$plasmacolors" ]; then
 	echo no change $plasmacurrent
-	return
+	exit 0
 fi
 
 $BIN_PLASMA $plasmacolors
