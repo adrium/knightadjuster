@@ -42,7 +42,7 @@ plasmacurrent=$(grep ColorScheme= ~/.config/kdeglobals)
 
 if [ "x$plasmacurrent" = "xColorScheme=$plasmacolors" ]; then
 	echo no change $plasmacurrent
-	return
+	exit
 fi
 
 $BIN_PLASMA $plasmacolors
