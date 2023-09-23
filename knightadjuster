@@ -66,8 +66,11 @@ else
 fi
 
 chromepid=$(pgrep chrome)
+chromedark=$(grep -o enable-force-dark ~/.config/google-chrome*/'Local State')
 
-if [ "x$chromepid" = x ]; then
+if [ "x$chromedark" = x ]; then
+	true
+elif [ "x$chromepid" = x ]; then
 	sed -i s/enable-force-dark@./enable-force-dark@$chromecolors/ ~/.config/google-chrome*/'Local State'
 else
 	if kdialog --yesno 'Restart chrome?'; then
