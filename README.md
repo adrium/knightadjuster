@@ -3,7 +3,7 @@
 Automatically adjust KDE app settings to light or dark mode,
 depending on the current [Night Color](https://userbase.kde.org/Tips/Enabling_the_blue_light_filter_on_KDE_Plasma) temperature.
 
-<video src="https://user-images.githubusercontent.com/23739584/223212913-21079f00-c3c0-45f4-8e8c-c71346273f95.mp4" width="480" autoplay loop></video>
+https://github.com/adrium/knightadjuster/assets/23739584/387090b4-f60f-4287-9055-5e01e3367cd4
 
 Supports KDE Plasma, Kate, Konsole, Dolphin, Plasma addons (that follow color schemes),
 GTK applications (such as GIMP and LibreOffice), and Google Chrome.
