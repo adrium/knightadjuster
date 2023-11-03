@@ -38,9 +38,13 @@ else
 	chromecolors=$CHROME_LIGHT
 fi
 
-plasmacurrent=$(grep ColorScheme= ~/.config/kdeglobals)
+plasmacurrent=$PLASMA_LIGHT
 
-if [ "x$plasmacurrent" = "xColorScheme=$plasmacolors" ]; then
+if [ "x$(qdbus org.freedesktop.portal.Desktop /org/freedesktop/portal/desktop org.freedesktop.portal.Settings.Read org.freedesktop.appearance color-scheme)" = x1 ]; then
+	plasmacurrent=$PLASMA_DARK
+fi
+
+if [ $plasmacurrent = $plasmacolors ]; then
 	echo no change $plasmacurrent
 	exit
 fi
