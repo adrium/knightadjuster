@@ -33,6 +33,8 @@ Create the config file `~/.config/knightadjusterrc` to override the following de
 	KONSOLE_LIGHT=Light
 	CHROME_DARK=1
 	CHROME_LIGHT=9
+	WALLPAPER_DARK=
+	WALLPAPER_LIGHT=
 
 ## Google Chrome
 

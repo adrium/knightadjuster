@@ -17,6 +17,7 @@ CHROME_LIGHT=9
 
 BIN_PLASMA=plasma-apply-colorscheme
 BIN_CURSOR=plasma-apply-cursortheme
+BIN_WALLPAPER=plasma-apply-wallpaperimage
 BIN_ICON=$(locate plasma-changeicons)
 
 export DISPLAY=:0
@@ -30,12 +31,14 @@ if [ $(qdbus org.kde.KWin /ColorCorrect org.kde.kwin.ColorCorrect.currentTempera
 	iconcolors=$ICON_DARK
 	konsolecolors=$KONSOLE_DARK
 	chromecolors=$CHROME_DARK
+	wallpaper=$WALLPAPER_DARK
 else
 	plasmacolors=$PLASMA_LIGHT
 	cursorcolors=$CURSOR_LIGHT
 	iconcolors=$ICON_LIGHT
 	konsolecolors=$KONSOLE_LIGHT
 	chromecolors=$CHROME_LIGHT
+	wallpaper=$WALLPAPER_LIGHT
 fi
 
 plasmacurrent=$PLASMA_LIGHT
@@ -52,6 +55,10 @@ fi
 $BIN_PLASMA $plasmacolors
 $BIN_CURSOR $cursorcolors
 $BIN_ICON $iconcolors
+
+if [ "x$wallpaper" != x ]; then
+	$BIN_WALLPAPER $wallpaper
+fi
 
 dbuskonsole=$(qdbus | grep konsole)
 
