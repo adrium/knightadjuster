@@ -15,7 +15,7 @@ Recommended to use with:
 * [Circle Clean Window Decoration](https://store.kde.org/p/1997282)
 * [Konsole Profiles](https://userbase.kde.org/Konsole#Profile_Management) for light and dark colors
 
-Lightweight alternative to [Yin-Yang](https://github.com/oskarsh/Yin-Yang).
+Lightweight alternative to [Yin-Yang](https://github.com/oskarsh/Yin-Yang) and [kshift](https://github.com/justjokiing/kshift).
 
 ## Configuration
 
