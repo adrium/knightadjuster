@@ -20,6 +20,7 @@ BIN_CURSOR=plasma-apply-cursortheme
 BIN_WALLPAPER=plasma-apply-wallpaperimage
 BIN_ICON=$(locate plasma-changeicons)
 
+export WAYLAND_DISPLAY=wayland-0
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
 dbustemp="org.kde.KWin /org/kde/KWin/NightLight org.kde.KWin.NightLight.currentTemperature"
